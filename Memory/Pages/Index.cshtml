@@ -1,0 +1,27 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="imageContainer"></div>
+
+<script>
+
+    let arrayOfCards = @Html.Raw(@Model.boardCreator.getJsonOfCards(7));
+    console.log(arrayOfCards);
+    let output = "";
+
+    for (var i = 0; i < arrayOfCards.length; i++) {
+        let elem = document.createElement("img");
+        
+        let borderElement = document.createElement("div");
+        $(borderElement).addClass("border-element");
+        console.log(arrayOfCards[i].ImageUrl);
+        elem.src = arrayOfCards[i].ImageUrl;
+        document.querySelector(".imageContainer")
+            .appendChild(borderElement)
+            .appendChild(elem);
+    }
+
+</script>
