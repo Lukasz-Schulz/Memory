@@ -8,20 +8,40 @@
 
 <script>
 
-    let arrayOfCards = @Html.Raw(@Model.boardCreator.getJsonOfCards(7));
-    console.log(arrayOfCards);
+    let arrayOfCards = @Html.Raw(@Model.boardCreator.getJsonOfCards(8));
+    
     let output = "";
 
-    for (var i = 0; i < arrayOfCards.length; i++) {
-        let elem = document.createElement("img");
-        
+    for (let i = 0; i < arrayOfCards.length * 2; i++) { 
         let borderElement = document.createElement("div");
         $(borderElement).addClass("border-element");
-        console.log(arrayOfCards[i].ImageUrl);
-        elem.src = arrayOfCards[i].ImageUrl;
-        document.querySelector(".imageContainer")
-            .appendChild(borderElement)
-            .appendChild(elem);
-    }
 
+        document.querySelector(".imageContainer")
+            .appendChild(borderElement);
+
+
+        for (let j = 0; j < arrayOfCards.length; j++) {
+
+            if (arrayOfCards[j].FirstLocalisation === i || arrayOfCards[j].SecondLocalisation === i) {
+
+                let elem = document.createElement("img");
+                elem.src = arrayOfCards[j].ImageUrl;
+                elem.style.visibility = "hidden";
+                console.log(elem.src);
+                document.querySelectorAll("div.border-element")[i].appendChild(elem);
+                break;
+            }
+        }
+    }
+    $("div.border-element").click((e) => {
+        if (e.target.children[0].clicked === true) {
+            
+            e.target.children[0].style.visibility = "hidden"
+          
+        } else {
+            console.log(e.target.children[0]);
+            e.target.children[0].style.visibility = "visible"
+        
+        }
+    });
 </script>

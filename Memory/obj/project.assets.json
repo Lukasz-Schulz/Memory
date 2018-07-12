@@ -12662,23 +12662,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\CM\\.nuget\\packages\\": {},
+    "C:\\Users\\RENT\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\CM\\source\\repos\\Memory\\Memory\\Memory\\Memory.csproj",
+      "projectUniqueName": "C:\\Users\\RENT\\source\\repos\\Memory\\Memory\\Memory.csproj",
       "projectName": "Memory",
-      "projectPath": "C:\\Users\\CM\\source\\repos\\Memory\\Memory\\Memory\\Memory.csproj",
-      "packagesPath": "C:\\Users\\CM\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\CM\\source\\repos\\Memory\\Memory\\Memory\\obj\\",
+      "projectPath": "C:\\Users\\RENT\\source\\repos\\Memory\\Memory\\Memory.csproj",
+      "packagesPath": "C:\\Users\\RENT\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\RENT\\source\\repos\\Memory\\Memory\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\CM\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\RENT\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
