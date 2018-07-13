@@ -11,8 +11,6 @@ namespace Memory.Pages
     {
         public BoardCreator boardCreator = new BoardCreator();
 
-
-
         public IndexModel()
         {
             boardCreator.AddCardToList(new Card("images/bobr.jpg", 0));
