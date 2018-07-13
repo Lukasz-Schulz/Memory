@@ -8,40 +8,67 @@
 
 <script>
 
-    let arrayOfCards = @Html.Raw(@Model.boardCreator.getJsonOfCards(8));
+    let arrayOfCards = @Html.Raw(@Model.boardCreator.getJsonOfCards(6));
     
-    let output = "";
-
     for (let i = 0; i < arrayOfCards.length * 2; i++) { 
         let borderElement = document.createElement("div");
         $(borderElement).addClass("border-element");
-
-        document.querySelector(".imageContainer")
-            .appendChild(borderElement);
-
+        document.querySelector(".imageContainer").appendChild(borderElement);
 
         for (let j = 0; j < arrayOfCards.length; j++) {
-
             if (arrayOfCards[j].FirstLocalisation === i || arrayOfCards[j].SecondLocalisation === i) {
 
                 let elem = document.createElement("img");
                 elem.src = arrayOfCards[j].ImageUrl;
                 elem.style.visibility = "hidden";
-                console.log(elem.src);
+                $("img").attr("clicked", true);
                 document.querySelectorAll("div.border-element")[i].appendChild(elem);
                 break;
             }
         }
     }
+
+    let uncoveredCards = [];
+
     $("div.border-element").click((e) => {
-        if (e.target.children[0].clicked === true) {
-            
-            e.target.children[0].style.visibility = "hidden"
-          
-        } else {
-            console.log(e.target.children[0]);
-            e.target.children[0].style.visibility = "visible"
+        if (e.target.nodeName === "DIV" && uncoveredCards.length < 2) {
+            uncoveredCards.push(e.target.children[0].src);
+            e.target.children[0].style.visibility = "visible";
+            let arrayOfCardsOnBoard = $(".imageContainer").children();
+
+            setTimeout(() => { 
+
+                if (uncoveredCards.length == 2 && uncoveredCards[0] === uncoveredCards[1]) {
+                    for (let i = 0; i < arrayOfCardsOnBoard.length; i++) {
+                        if (arrayOfCardsOnBoard[i].children[0].src === uncoveredCards[0]) {
+
+                            $(arrayOfCardsOnBoard[i].children[0]).attr("src", "images/zwierzaki/zwierzaki.jpg");
+                        }
+                    }
+                    uncoveredCards = [];                
+                } 
+                else if (uncoveredCards.length == 2) {
+                    for (let i = 0; i < arrayOfCardsOnBoard.length; i++) {
+                        if (arrayOfCardsOnBoard[i].children[0].src.substr(arrayOfCardsOnBoard[i].children[0].src.length - 13) !== "zwierzaki.jpg") {                        
+                            arrayOfCardsOnBoard[i].children[0].style.visibility = "hidden";
+                        }
+                    }
+                    uncoveredCards = []; 
+                }
+            }, 1800);
+        } 
         
-        }
     });
+
+
+    //else if (uncoveredCards.length == 2){
+    //    console.log("różne");
+    //    for (let i = 0; i < arrayOfCardsOnBoard.length; i++) {
+    //        if (arrayOfCardsOnBoard[i].children[0].src.substr(arrayOfCardsOnBoard[i].children[0].src.length - 13) !== "zwierzaki.jpg") {
+    //            console.log("RóŻne")
+    //            console.log(arrayOfCardsOnBoard[i].children[0].style.visibility)
+    //            arrayOfCardsOnBoard[i].children[0].style.visibility = "hidden";
+    //        }
+    //    }
+    //}
 </script>
