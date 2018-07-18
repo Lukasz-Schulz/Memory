@@ -15,12 +15,12 @@
         if (level <= 0) {
             alert("you win");
             level = 8;
-            startGame(level);
+            location.reload();
         }
     }
 
-    $("#start").click(() => {
-        startGame(level);
+    $("#restart").click(() => {
+        location.reload();
     })
 
     function startGame(level) {
